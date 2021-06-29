@@ -1,0 +1,48 @@
+{%  extends 'website/base.html' %}
+
+{% load static %}
+
+{% block main %}
+
+    <article class="container">
+        <h1>Bem-vindo!</h1>
+        <br>
+        <p>Aprender a tocar um instrumento é certamente uma experiência fantástica.</p>
+        <p>Se o teu objetivo é aprender a tocar viola e poderes tocar por diversão, com amigos ou até mesmo para te tornares num guitarrista profissional, neste site poderás encontrar o conteúdo necessário.</p>
+        <p>Aprende a tocar viola conosco!
+        </p>
+    </article>
+
+    <section class="container grid_gallery">
+
+        <figure class="grid_img">
+            <img src="{% static 'website/images/viola_10.jpg' %}" alt="viola,criança" title="Criança na cama a tocar viola" class="picture_transition">
+            <figcaption> <a href="{% url 'website:index' %}"> Home</a> </figcaption>
+        </figure>
+        <figure class="grid_img">
+            <img src="{% static 'website/images/viola_11.jpg' %}" alt="viola Pai e crinça" title="Criança a tocar viola com o Pai" class="picture_transition">
+            <figcaption> <a href="{% url 'website:introducao' %}"> Introducão</a> </figcaption>
+        </figure>
+        <figure class="grid_img">
+            <img src="{% static 'website/images/viola_12.jpg' %}" alt="Exposição de violas" title="Conjunto de violas em exposição" class="picture_transition">
+            <figcaption> <a href="{% url 'website:nprinc' %}"> Noções Principais</a> </figcaption>
+        </figure>
+        <figure class="grid_img">
+            <img src="{% static 'website/images/viola_13.jpg' %}" alt="Viola Rua" title="Rapariga a passear na rua com viola" class="picture_transition">
+            <figcaption> <a href="{% url 'website:exercicios' %}"> Exercicios</a> </figcaption>
+        </figure>
+        <figure class="grid_img">
+            <img src="{% static 'website/images/viola_15.jpg' %}" alt="Fogueira Viola Amigos" title="A tocar viola em convivio entre amigos na praia a roda de uma fogueira" class="picture_transition">
+            <figcaption> <a href="{% url 'website:inserir_contato' %}"> Contato</a> </figcaption>
+        </figure>
+        <figure class="grid_img">
+            <img src="{% static 'website/images/viola_14.jpg' %}" alt="Pai criança casa" title="Criança e o Pai a tocar viola" class="picture_transition">
+            <figcaption> <a href="{% url 'website:aboutus' %}"> About US</a> </figcaption>
+        </figure>
+    </section>
+    <details>
+        <summary>Gettyimages</summary>
+        <p> Site onde foram retiradas as fotos da presente pagina em https://www.gettyimages.pt/</p>
+    </details>
+
+{% endblock %}

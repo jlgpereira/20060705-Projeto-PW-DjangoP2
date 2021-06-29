@@ -1,0 +1,21 @@
+{%  extends 'website/base.html' %}
+
+{% block main %}
+    <section>
+        <h3>Editar Contato</h3>
+        <form method="POST" action="{% url 'website:editar_contato' contato_id %}">
+            {% csrf_token %}
+		    {{ form.as_p }}
+            <br>
+            <input type="submit" value="Guardar" class="btn btn-success float-right" >
+            <a href="{% url 'website:apagar_contato' contato_id %}" role="button" class="btn btn-danger float-right mr-1">Apagar</a>
+            <a href="{% url 'website:contatos' %}" role="button" class="btn btn-warning float-right mr-1">Cancelar</a>
+        </form>
+    </section>
+
+    <br><br><br>
+
+    <article>
+
+    </article>
+{% endblock %}

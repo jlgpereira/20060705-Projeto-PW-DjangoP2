@@ -1,0 +1,39 @@
+{%  extends 'website/base.html' %}
+
+{% load static %}
+
+{% block scripts %}
+    <script src="{% static 'website/js/aulas.js' %}"></script>
+{% endblock %}
+
+
+{% block main %}
+    <section>
+        <h3>Aulas</h3>
+
+        <button data-seccao="1">Aulas</button>
+        <button data-seccao="2">Alunos</button>
+
+        <br>
+
+        <div id="conteudo">
+{#            <ul>#}
+{#                {% for aula in aulas %}#}
+{#                    <li id="linha"><a href="{% url 'website:aula' aula.id %}">Aula de {{ aula.titulo }} | Duração: {{ aula.duracao }}</a></li>#}
+{#                {% endfor %}#}
+{#            </ul>#}
+        </div>
+
+        <ul>
+            {% for aula in aulas %}
+                <li><a href="{% url 'website:aula' aula.id %}">Aula de {{ aula.titulo }} | Duração: {{ aula.duracao }}</a></li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <br><br><br>
+
+    <article>
+
+    </article>
+{% endblock %}

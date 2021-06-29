@@ -1,0 +1,25 @@
+{%  extends 'website/base.html' %}
+
+{% block main %}
+    <section>
+
+        <h3>Lista de Contatos</h3>
+        {% for contato in contatos %}
+            <p>
+                <span class="info"> ({{ contato.criado.day }}/{{ contato.criado.month }}/{{ contato.criado.year }}) </span>
+                {{ contato.nome }} {{ contato.apelido }}
+
+                <a href="{% url 'website:editar_contato' contato.id %}" class="btn btn-warning btn-sm" style="float: right; margin-right: 10px">
+                    Editar
+                </a>
+            </p>
+        {% endfor %}
+
+    </section>
+
+    <br><br><br>
+
+    <article>
+
+    </article>
+{% endblock %}

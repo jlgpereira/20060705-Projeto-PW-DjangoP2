@@ -1,0 +1,17 @@
+{%  extends 'website/base.html' %}
+
+{% load static %}
+
+{% block main %}
+    <section>
+        <h3>Relatórios</h3>
+        <img id="section" src="data:image/png;base64,{{ grafico|safe }}">
+
+    </section>
+
+    <br><br><br>
+
+    <article>
+
+    </article>
+{% endblock %}

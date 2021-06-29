@@ -1,0 +1,154 @@
+<!-- templates/base.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <!--o conjunto de caracteres que o documento está autorizado a usar- codificação UTF-8-->
+    <meta charset="UTF-8">
+    <!--descrição do conteudo do site-->
+    <meta name="description" content="Website Projeto PW">
+    <!--Palavras chave-->
+    <meta name="keywords" content="Projeto PW">
+    <!--Web design responsivo-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--favicon adicionado à sua página-->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'website/images/favicon.ico' %}" />
+    <!-- link Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- link da pagina CSS/ folha de estilo -->
+    <link rel="stylesheet" href="{% static 'website/css/base.css' %}">
+    <!-- Fonts Google -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!--aparece na janela/aba do navegador-->
+    <title>Viola - {% if titulo_pagina == 'Home' %}Bem-vindo{% else %} {{ titulo_pagina }} {% endif %}</title>
+
+    {% block scripts %}
+
+    {% endblock %}
+
+</head>
+
+<body {% if titulo_pagina == 'Home' %} id="homepage" {% endif %} >
+    
+    {% if titulo_pagina == 'Home' %}
+        <section class="welcome-content">
+                <figure>
+                    <img src="{% static 'website/images/logo_welcome.jpg' %}" alt="Logo">
+                </figure>
+                <h1><a href="#introduction">Bem-vindo!</a></h1>
+                <br>
+                <h2><a href="#introduction">Aprende a Tocar Viola</a></h2>
+        </section>
+    {% endif %}
+
+    <header class="header">
+        <figure>
+            <img src="{% static 'website/images/logo_header.jpg' %}" alt="Logo">
+        </figure>
+
+        <h1> {{ titulo_pagina }} </h1>
+        <nav>
+            <br>
+            <ul class="menu">
+                <li>
+                    <a href="{% url 'website:index' %}"><i class="material-icons">home</i>Home</a>
+                </li>
+                <li>
+                    <a href="{% url 'website:introducao' %}"><i class="material-icons">library_music</i>Aprendizagem</a>
+                    <ul>
+                        <li><a href="{% url 'website:introducao' %}">Introdução</a></li>
+                        <li><a href="{% url 'website:nprinc' %}">Noções Principais</a></li>
+                        <li><a href="{% url 'website:exercicios' %}">Exercicios Preparatorios</a></li>
+                        <li><a href="{% url 'website:quiz' %}">Quiz</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="{% url 'website:pesquisa' %}"><i class="material-icons">search</i>Pesquisa Músicas</a>
+                </li>
+                <li>
+                    <a href="{% url 'website:inserir_contato' %}"><i class="material-icons">question_answer</i>Contato</a>
+                    <ul>
+                        <li><a href="{% url 'website:inserir_contato' %}">Inserir Contato</a></li>
+                        <li><a href="{% url 'website:comentarios' %}">Comentários</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="{% url 'website:aboutus' %}"><i class="material-icons">info</i>About US</a>
+                </li>
+                <li>
+                    {% if not request.user.is_authenticated %}
+                        <a href="{% url 'website:login' %}">Entrar</a>
+                    {% else %}
+                        <a href="">Olá, {{ request.user.first_name }}</a>
+                        <ul>
+                            <li><a href="{% url 'website:contatos' %}">Contatos</a></li>
+                            <li><a href="{% url 'website:aulas' %}">Aulas</a></li>
+                            <li><a href="{% url 'website:relatorios' %}">Relatórios</a></li>
+                            <li><a href="{% url 'website:logout' %}">Sair</a></li>
+                        </ul>
+                    {% endif %}
+                </li>
+
+
+            </ul>
+            </nav>
+    </header>
+
+    <main class="container text-center" id="introduction">
+        {% block main %}
+
+        {% endblock %}
+    </main>
+
+    <aside>
+        {% if titulo_pagina == 'Introdução' %}
+            <br>
+            <h3> Sites e Blogs sobre "Como aprender a tocar" </h3><br><br>
+            <a href="https://www.superprof.pt/blog/tutoriais-para-tocar-violao-ou-guitarra/" target="_blank">Blog Superprof </a><br>
+            <a href="https://www.descomplicandoamusica.com/aula-como-tocar-guitarra/" target="_blank">Descomplicando a musica </a><br>
+            <a href="http://www.guitarcoast.com/2012/06/como-aprender-tocar-guitarra-sozinho.html" target="_blank">Guitar Coast </a><br>
+            <a href="https://blog.planetamusica.net/aprender-a-tocar-violao-sozinho/" target="_blank">Blog Planeta Musica </a>
+        {% endif %}
+
+        {% if titulo_pagina == 'Noções Principais' %}
+        <br>
+            <h3> Documentos de apoio aos Videos </h3><br><br>
+            <a href="./doc//2_Cordas da Guitarra.pdf" target="_blank">Cordas da Guitarra </a><br>
+            <a href="./doc/2_Pauta (Clave de Sol).pdf" target="_blank">Notas da Pauta </a><br>
+            <a href="./doc/8 acordes Básicos.pdf" target="_blank">8 Acordes Básicos </a><br>
+            <a href="./doc/Posição das mãos.pdf" target="_blank">Posição das mãos </a>
+        {% endif %}
+
+        {% if titulo_pagina == 'Exercícios Preparatórios' %}
+            <br>
+            <h3> Documentos de apoio aos Videos </h3><br><br>
+            <a href="./doc/1_Técnica de Palheta (Picking).pdf" target="_blank">Técnica de Palheta (Picking) </a><br>
+            <a href="./doc/2_Técnica de Dedilhar (Fingerstyle).pdf" target="_blank">Técnica de Dedilhar (Fingerstyle) </a><br>
+            <a href="./doc/1.2_Identificar as notas no braço (NoteWheel).pdf" target="_blank">Identificar as notas no braço </a><br>
+            <a href="./doc/2_Pauta (Clave de Sol).pdf" target="_blank">Notas Pauta </a><br>
+            <a href="./doc/3_Tablatura.pdf" target="_blank">Notas Tabatura </a><br>
+            <a href="./doc/1_Notas naturais na posição aberta.pdf" target="_blank">Notas Naturais </a><br>
+            <a href="./doc/8 acordes Básicos.pdf" target="_blank">8 Acordes Básicos </a>
+        {% endif %}
+
+        <br><br><br>
+        <p>Clica em cima da imagem para voltares para a HomePage</p>
+        <br>
+        <svg width="300" height="269">
+            <image href ="{% static 'website/images/svg_m3.png' %}" width ="80%" height ="80%">
+            </image>
+            <a href="./index.html">
+                <polygon opacity ="0.0" points ="0,0 300,0 300,269 0,269" /></a>
+        </svg>
+    </aside>
+
+    <footer>
+        <p> Progração Web - 2º ano </p>
+        <p> Universidade Lusófona de Humanidades e Tecnologias </p>
+    </footer>
+
+</body>
+</html>

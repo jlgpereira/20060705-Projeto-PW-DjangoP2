@@ -1,0 +1,20 @@
+{%  extends 'website/base.html' %}
+
+{% block main %}
+    <section>
+        <h3>Formulário de Contato</h3>
+        <form method="POST" action="">
+            {% csrf_token %}
+   	        {{ form.as_p }}
+            <br>
+            <a href="{% url 'website:inserir_contato' %}" role="button" class="btn btn-warning">Limpar</a>
+            <input type="submit" value="Guardar" class="btn btn-success" >
+        </form>
+    </section>
+
+    <br><br><br>
+
+    <article>
+
+    </article>
+{% endblock %}

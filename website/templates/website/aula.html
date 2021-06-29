@@ -1,0 +1,43 @@
+{%  extends 'website/base.html' %}
+
+{% load static %}
+
+{% block scripts %}
+    <script src="{% static 'website/js/aula.js' %}"></script>
+{% endblock %}
+
+{% block main %}
+    <h3>Aula {{ aula.titulo }}</h3>
+    <ul>
+        <li>Sala: {{ aula.sala }}</li>
+        <li>Duração: {{ aula.duracao }} min</li>
+    </ul>
+
+    <h3>Alunos</h3>
+    <form action="{% url 'website:adicionar_contato' aula.id %}" method="POST">
+        {% csrf_token %}
+        <select name="contato" id="lista" >
+            {% for nao_contato in nao_contatos %}
+                <option value="{{ nao_contato.id }}">{{ nao_contato }}</option>
+            {% endfor %}
+        </select>
+        <input id="adicionar" type="submit" value="Adcicionar" class="btn btn-success">
+    </form>
+    <ul>
+        {% for contato in contatos %}
+            <li>
+                <p>{{ contato }}
+                    <a href="{% url 'website:remover_contato' aula.id contato.id %}" class="btn btn-warning btn-sm" style="float: right; margin-right: 10px">
+                        Remover
+                    </a>
+                </p>
+            </li>
+        {% empty %}
+            <li>Sem alunos</li>
+        {% endfor %}
+    </ul>
+
+    <br>
+
+    <a href="{% url 'website:aulas' %}">Voltar à lista das aulas</a>
+{% endblock %}

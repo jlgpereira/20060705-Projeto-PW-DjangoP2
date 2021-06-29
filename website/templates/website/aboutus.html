@@ -1,0 +1,150 @@
+{%  extends 'website/base.html' %}
+
+{% block main %}
+    {% load static %}
+
+    <section class="container">
+
+        <h3>Mapa do Site</h3>
+        <figure>
+            <a href="{% static 'website/images/mapa_site.jpg' %}" target="_blank"><img src="{% static 'website/images/mapa_site.jpg' %}" alt="Mapa Site"></a>
+            <details>
+                <figcaption style="text-align:left">Mapa do Site</figcaption>
+            </details>
+        </figure>
+
+    </section>
+
+
+    <section class="container">
+
+        <section>
+            <h3>Inventário</h3>
+            <p>Lista de quantidades: páginas, imagens, links externos, vídeos e animações</p>
+            <br>
+            <table class="inventory">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Quantidade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Páginas</td>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <td>Imagens</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td>Links Externos</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td>Vídeos</td>
+                        <td>13</td>
+                    </tr>
+                    <tr>
+                        <td>Animções</td>
+                        <td>1</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>TOTAL:</th>
+                        <th>34</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
+
+        <br><br>
+
+        <section>
+            <h3>Técnicas usadas</h3>
+            <p>Lista de quantidades: páginas, imagens, links externos, vídeos e animações</p>
+            <br>
+            <table class="features">
+                <thead>
+                    <tr>
+                        <th>Caraterísticas</th>
+                        <th>Elementos/técnicas</th>
+                        <th>Exemplos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Layouts</td>
+                        <td>Utilização de CSS Grid e CSS flexbox para construção dos layouts das páginas</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Responsividade</td>
+                        <td>Para a responsividade foi utilizada uma media query que adapta o tamanho da janela do browser consoante seja PC ou Smartphone. </td>
+                        <td>@media (max-width: 600px)</td>
+                    </tr>
+                    <tr>
+                        <td>Seletores</td>
+                        <td>O site tem implementados os selectores universal, tipo, classe, id, atributo, pseudo-classe e pseudo-elemento.</td>
+                        <td>
+                            <span class="highlight_text">Universal</span>
+                            <p>Definição global da font-family, box-sizing, padding, margin e scroll-behavior</p>
+                            <span class="highlight_text">Tipo</span>
+                            <p>Redefinição de elementos tais como body, header, nav, main, aside, footer</p>
+                            <span class="highlight_text">Classe</span>
+                            <p>Definição de classes tais como .main, .form-container, .header, .menu, .flex, .flex>article, .container_img, .picture_transition, .picture_transition:hover,.welcome-content, .container, .grid_gallery, .grid_img</p>
+                            <span class="highlight_text">Id</span>
+                            <p>Definição do id #homepage, utilizado para estilizar o body da Página Princial, que tem um layout específico</p>
+                            <span class="highlight_text">Atributo</span>
+                            <p>Utilizado para estilizar as âncoras com target="_blank"</p>
+                            <span class="highlight_text">Pseudo-classe</span>
+                            <p>Utilizado para definir a pseudo-classe hover das ancoras</p>
+                            <span class="highlight_text">Pseudo-elemento</span>
+                            <p>Utilizado para estilizar o último filho da classe .menu (i.e. a âncora). Combinado com a a pseudo-classe <i>hover</i> e a propriedade <i>visibility</i> permite criar o efeito de seleção de página no menu de navegação de
+                                páginas.
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Etiquetas</td>
+                        <td>header, nav, main, article, footer, figure</td>
+                        <td>As etiquetas estão implementadas em cada uma das páginas para formatação dos componente do layout</td>
+                    </tr>
+                    <tr>
+                        <td>Animações</td>
+                        <td>Utilização das animações Rotate e Opcaity</td>
+                        <td>As animações Rotate e Opcaity estão a ser utilizadas no h1 da palavra Bem-Vindo da Página Principal do Site</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+    </section>
+
+    <br><br><br><br>
+
+    <article>
+        <h3>Layouts</h3>
+        <br>
+        <br>
+        <h4>Layout PC</h4>
+        <figure class="container">
+            <a href="{% static 'website/images/layout_pc.jpg' %}" target="_blank"><img src="{% static 'website/images/layout_pc.jpg' %}" alt="Layout PC"></a>
+            <details>
+                <figcaption style="text-align:left">Layout PC - estrutura utilizada quando o dispositivo tem mais de 600px</figcaption>
+            </details>
+        </figure>
+        <br>
+        <br>
+        <br>
+        <h4>Layout Telemóvel</h4>
+        <figure class="container">
+            <a href="{% static 'website/images/layout_mobile.jpg" target="_blank' %}"><img src="{% static 'website/images/layout_mobile.jpg' %}" alt="Layout Mobile"></a>
+            <details>
+                <figcaption style="text-align:left">Layout Telemóvel - estrutura utilizada quando o dispositivo tem menos de 600px</figcaption>
+            </details>
+        </figure>
+    </article>
+{% endblock %}

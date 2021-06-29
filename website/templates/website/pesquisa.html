@@ -1,0 +1,21 @@
+{%  extends 'website/base.html' %}
+
+{% load static %}
+
+{% block scripts %}
+    <script src="{% static 'website/js/pesquisa.js' %}"></script>
+{% endblock %}
+
+{% block main %}
+    <h3>Notícias</h3>
+    <h5>by Vagalume</h5>
+
+    <form>
+        <input type="text" id="artista" placeholder="artista...">
+        <input type="text" id="musica" placeholder="música...">
+        <input type="submit" value="procurar">
+    </form>
+    <div>
+        <p id="letra-musica"></p>
+    </div>
+{% endblock %}
