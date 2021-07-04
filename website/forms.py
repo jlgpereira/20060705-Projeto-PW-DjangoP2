@@ -92,19 +92,23 @@ class QuizForm(ModelForm):
                ('Si', 'Si'),
                ('Lá', 'Lá'))
 
-        op4 = (('Notas tocadas simultaneamente', 'Notas tocadas simultaneamente'),
+        op4 = (('nulo', ''),
+               ('Notas tocadas simultaneamente', 'Notas tocadas simultaneamente'),
                ('Conjunto de notas ordernadas pela sua frequência/tom', 'Conjunto de notas ordernadas pela sua frequência/tom'),
                ('Notas tocadas em oitavas', 'Notas tocadas em oitavas'))
 
-        op5 = (('Um peça que compõe a viola', 'Um peça que compõe a viola'),
+        op5 = (('nulo', ''),
+               ('Um peça que compõe a viola', 'Um peça que compõe a viola'),
                ('Notas tocadas em terças', 'Notas tocadas em terças'),
                ('Um conjunto harmónico de três ou mais notas', 'Um conjunto harmónico de três ou mais notas'))
 
-        op6 = (('Trastes e casas', 'Trastes e casas'),
+        op6 = (('nulo', ''),
+               ('Trastes e casas', 'Trastes e casas'),
                ('Separadores e espaços', 'Separadores e espaços'),
                ('Divisores e casas', 'Divisores e casas'))
 
-        op9 = (('Mi, Lá, Ré, Sol, Si e Mi', 'Mi, Lá, Ré, Sol, Si e Mi'),
+        op9 = (('nulo', ''),
+               ('Mi, Lá, Ré, Sol, Si e Mi', 'Mi, Lá, Ré, Sol, Si e Mi'),
                ('Lá, Dó, Si, Mi, Lá e Sol', 'Lá, Dó, Si, Mi, Lá e Sol'),
                ('Sol, Lá, Si, Mi, Dó e Fá', 'Sol, Lá, Si, Mi, Dó e Fá'))
 
@@ -115,31 +119,24 @@ class QuizForm(ModelForm):
 
         # inserção de classes CSS para formatação de cada campo do formulário
         widgets = {
-            'r1': forms.NumberInput(attrs={'type': 'range', 'step': '1', 'min': '1', 'max': '6'}),
-            'r2': forms.NumberInput(attrs={'class': 'form-control', 'min': 1, 'max': 6}),
-            'r3': forms.RadioSelect(choices=op3),
-            'r4': forms.Select(choices=op4, attrs={'class': 'form-control'}),
-            'r5': forms.Select(choices=op5, attrs={'class': 'form-control'}),
-            'r6': forms.Select(choices=op6, attrs={'class': 'form-control'}),
-            'r7': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
-            'r8': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Escreva aqui...'}),
-            'r9': forms.Select(choices=op9, attrs={'class': 'form-control'}),
-            'r10': forms.CheckboxSelectMultiple(choices=op10)
-        }
-
-        labels = {
-            'r1': '1. Quantas cordas tem uma viola standard?',
-            'r2': '2. Qual o número da corda com a nota mais grave numa viola?',
-            'r3': '3. Qual é a nota da segunda corda de uma viola?',
-            'r4': '4. O que é Escala Músical?',
-            'r5': '5. O que é um acorde?',
-            'r6': '6. Quais os nome dados às partes que constituem o braço da viola?',
-            'r7': '7. Qual a data de nascimento de Alexandr Misko, vencedor do prémio Guitarrista do Ano em 2018?',
-            'r8': '8. Nos símbolos de acordes o que significa #?',
-            'r9': '9. No 12º traste quais são as notas que podemos encontrar?',
-            'r10': '10. Quais destas técnicas são de guitarra acústica?',
+            'nome': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ex.: John Doe'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Ex.: nome@email.com'}),
+            'e1': forms.NumberInput(attrs={'type': 'range', 'step': '1', 'min': '1', 'max': '6'}),
+            'e2': forms.NumberInput(attrs={'class': 'form-control', 'min': 1, 'max': 6}),
+            'e3': forms.RadioSelect(choices=op3),
+            'e4': forms.Select(choices=op4, attrs={'class': 'form-control'}),
+            'e5': forms.Select(choices=op5, attrs={'class': 'form-control'}),
+            'e6': forms.Select(choices=op6, attrs={'class': 'form-control'}),
+            'e7': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+            'e8': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Escreva aqui...'}),
+            'e9': forms.Select(choices=op9, attrs={'class': 'form-control'}),
+            'e10': forms.CheckboxSelectMultiple(choices=op10)
         }
 
         help_texts = {
-            'r8': 'Escreva apenas uma palavra'
+            'nome': 'mandatório',
+            'email': 'mandatório',
+            'e1': '(de 1 a 6)',
+            'e1': '(de 1 a 6)',
+            'e8': 'Escreva apenas uma palavra'
         }

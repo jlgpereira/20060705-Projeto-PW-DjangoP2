@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Contato, Comentario, Quiz, Sala, Aula
+from .models import Contato, Comentario, Quiz, Quiz, Sala, Aula
 
 
 class AulaAdmin(admin.ModelAdmin):
